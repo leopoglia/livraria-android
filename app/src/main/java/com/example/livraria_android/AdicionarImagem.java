@@ -24,6 +24,13 @@ public class AdicionarImagem extends AppCompatActivity {
                 startActivity(it);
             }
         });
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String value = extras.getString("key");
+
+            System.out.println(value);
+        }
     }
 
 

@@ -22,7 +22,12 @@ public class CriarLivroActivity extends AppCompatActivity {
 
         criar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+
+
                 Intent it = new Intent(CriarLivroActivity.this, AdicionarImagem.class);
+                it.putExtra("key","Hello World");
+
                 startActivity(it);
             }
         });
@@ -43,6 +48,8 @@ public class CriarLivroActivity extends AppCompatActivity {
         EditText ano = (EditText)findViewById(R.id.editTextTextPersonName6);
 
         Button cadastrar = findViewById(R.id.button3);
+
+
 
         cadastrar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
