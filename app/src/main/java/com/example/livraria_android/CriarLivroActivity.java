@@ -17,14 +17,15 @@ public class CriarLivroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_livro);
 
-
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String value = extras.getString("key");
+            System.out.println("EXTRA EXTRA!!!!" + value);
+        }
         Button criar = findViewById(R.id.button2);
 
         criar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
-
-
                 Intent it = new Intent(CriarLivroActivity.this, AdicionarImagem.class);
                 it.putExtra("key","Hello World");
 
