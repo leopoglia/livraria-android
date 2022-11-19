@@ -1,7 +1,10 @@
 package com.example.livraria_android;
 
 
+import android.media.Image;
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,11 +16,24 @@ public class Livro extends AppCompatActivity {
     int ano;
     int foto;
 
+    ImageView imageView;
+    TextView nomeView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_item);
+
+        imageView = findViewById(R.id.imageView);
+        nomeView = findViewById(R.id.textView);
+
+        System.out.println("FOTO --> " + foto);
+
+        imageView.setImageResource(R.drawable.elon1);
+        System.out.println("NOME -------> " + this.getNome());
+        nomeView.setText(this.getNome());
     }
+
 
     public Livro(){
 
