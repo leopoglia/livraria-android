@@ -12,16 +12,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class CriarLivroActivity extends AppCompatActivity {
 
+    static String valueImageme;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_livro);
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            String value = extras.getString("key");
-            System.out.println("EXTRA EXTRA!!!!" + value);
-        }
         Button criar = findViewById(R.id.button2);
 
         criar.setOnClickListener(new View.OnClickListener() {
@@ -37,8 +34,7 @@ public class CriarLivroActivity extends AppCompatActivity {
 
         voltar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent it = new Intent(CriarLivroActivity.this, MainActivity.class);
-                startActivity(it);
+                finish();
             }
         });
 
@@ -49,19 +45,24 @@ public class CriarLivroActivity extends AppCompatActivity {
         EditText ano = (EditText)findViewById(R.id.editTextTextPersonName6);
 
         Button cadastrar = findViewById(R.id.button3);
-
-
-
         cadastrar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("nome ->" + nome.getText().toString());
-                System.out.println("sinopse ->" + sinopse.getText().toString());
-                System.out.println("editora ->" + editora.getText().toString());
-                System.out.println("ano ->" + ano.getText().toString());
+                String livro = nome.getText().toString() + ";" + sinopse.getText().toString() + ";" +  editora.getText().toString() + ";" +  Integer.parseInt(ano.getText().toString()) + ";" +  valueImageme;
+                System.out.println(livro);
 
+                Intent i = new Intent(CriarLivroActivity.this, MainActivity.class);
+                i.putExtra("livro", livro);
+                startActivity(i);
             }
         });
 
+
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String valueImagem = extras.getString("key");
+            valueImageme = valueImagem;
+        }
 
     }
 }

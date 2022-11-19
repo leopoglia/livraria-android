@@ -1,7 +1,9 @@
 package com.example.livraria_android;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -9,20 +11,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
+public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> implements View.OnClickListener{
 
-    Context context;
+    Context Context;
     List<Livro> items;
 
     public MyAdapter(Context context, List<Livro> items) {
-        this.context = context;
+        Context = context;
         this.items = items;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder((LayoutInflater.from(context).inflate(R.layout.item_view, parent, false)));
+        View itemLista = LayoutInflater.from(Context).inflate(R.layout.item_view, parent, false);
+        Context = itemLista.getContext();
+        itemLista.setOnClickListener(this);
+        return new MyViewHolder(itemLista);
     }
 
     @Override
@@ -34,5 +39,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    @Override
+    public void onClick(View v) {
+        Context.startActivity(new Intent(Context, Livro.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
     }
 }

@@ -33,8 +33,7 @@ public class AdicionarImagem extends AppCompatActivity {
         FloatingActionButton criar = findViewById(R.id.floatingActionButton);
         criar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent it = new Intent(AdicionarImagem.this, CriarLivroActivity.class);
-                startActivity(it);
+                finish();
             }
         });
 

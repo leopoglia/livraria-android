@@ -1,13 +1,27 @@
 package com.example.livraria_android;
 
 
-public class Livro {
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class Livro extends AppCompatActivity {
 
     String nome;
     String sinopse;
     String editora;
     int ano;
     int foto;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    public Livro(){
+
+    }
 
     public Livro(String nome, String sinopse,
                  String editora, int ano, int foto){
@@ -22,6 +36,8 @@ public class Livro {
         this.nome = nome;
         this.foto = foto;
     }
+
+
 
     public String getNome() {
         return nome;
