@@ -19,6 +19,7 @@ public class CriarLivroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_livro);
 
+
         Button criar = findViewById(R.id.button2);
 
         criar.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +64,5 @@ public class CriarLivroActivity extends AppCompatActivity {
             String valueImagem = extras.getString("key");
             valueImageme = valueImagem;
         }
-
     }
 }

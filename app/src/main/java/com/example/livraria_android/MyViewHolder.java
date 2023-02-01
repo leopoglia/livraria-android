@@ -18,4 +18,5 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
         nomeView = itemView.findViewById(R.id.name);
     }
 
+
 }

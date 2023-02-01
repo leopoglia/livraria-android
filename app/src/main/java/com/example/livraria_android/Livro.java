@@ -1,7 +1,7 @@
 package com.example.livraria_android;
 
 
-import android.media.Image;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,20 +18,40 @@ public class Livro extends AppCompatActivity {
 
     ImageView imageView;
     TextView nomeView;
+    TextView sinopseView;
+    TextView editoraView;
+    TextView anoView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Intent intent = getIntent();
+        String nome = intent.getStringExtra("nome");
+        String fotona = intent.getStringExtra("foto");
+        String sinopse = intent.getStringExtra("sinopse");
+        String editora = intent.getStringExtra("editora");
+        String ano = intent.getStringExtra("ano");
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item);
 
         imageView = findViewById(R.id.imageView);
         nomeView = findViewById(R.id.textView);
+        sinopseView = findViewById(R.id.sinopseView);
+        editoraView = findViewById(R.id.editoraView);
+        anoView = findViewById(R.id.anoView);
 
-        System.out.println("FOTO --> " + foto);
 
-        imageView.setImageResource(R.drawable.elon1);
-        System.out.println("NOME -------> " + this.getNome());
-        nomeView.setText(this.getNome());
+//        if(foto == )
+        imageView.setImageResource(Integer.parseInt(fotona));
+        nomeView.setText("Nome: " + nome);
+        sinopseView.setText("Sinopse: " + sinopse);
+        editoraView.setText("Editora: " + editora);
+        anoView.setText("Ano: " + ano);
+
     }
 
 
