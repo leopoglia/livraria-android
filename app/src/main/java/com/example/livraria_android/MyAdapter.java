@@ -1,5 +1,6 @@
 package com.example.livraria_android;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -29,20 +30,48 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> implements Vie
         View itemLista = LayoutInflater.from(Context).inflate(R.layout.item_view, parent, false);
 
         Context = itemLista.getContext();
-        itemLista.setOnClickListener(this);
+         itemLista.setOnClickListener(this);
         return new MyViewHolder(itemLista);
 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         holder.nomeView.setText(items.get(position).getNome());
         holder.fotoView.setImageResource(items.get(position).getFoto());
+
         setFoto(String.valueOf(items.get(position).foto));
 
-        setPosicao(position);
-        System.out.println("POSIIIIIIIIIIIIIIIIITION --->" + position);
+        View minhaView = holder.itemView.findViewById(R.id.constraintLayout);
+
+
+        holder.constraintLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Context, Livro.class);
+                intent.putExtra("nome", items.get(position).getNome());
+                intent.putExtra("foto", fotonsio);
+                intent.putExtra("sinopse", items.get(position).getSinopse());
+                intent.putExtra("editora", items.get(position).getEditora());
+                intent.putExtra("ano", items.get(position).getAno());
+
+
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                Context.startActivity(intent);
+            }
+        });
+
+        holder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                ViewGroup parent = (ViewGroup) minhaView.getParent();
+                parent.removeView(minhaView);
+
+            }
+        });
+
     }
 
     @Override
@@ -58,20 +87,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> implements Vie
         this.fotonsio = foto;
     }
 
+    public void setItems(List<Livro> items) {
+        this.items = items;
+    }
+
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(Context, Livro.class);
 
-
-        intent.putExtra("nome", items.get(posicao).getNome());
-        intent.putExtra("foto", fotonsio);
-        intent.putExtra("sinopse", items.get(posicao).getSinopse());
-        intent.putExtra("editora", items.get(posicao).getEditora());
-        intent.putExtra("ano", items.get(posicao).getAno());
-
-
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        Context.startActivity(intent);
     }
 
 }

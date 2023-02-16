@@ -6,34 +6,46 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
     android:layout_marginRight="10dp"
-    android:layout_marginLeft="10dp">
+    android:layout_marginLeft="10dp"
+    android:id="@+id/viewItem">
 
 
-    <ImageView
-        android:id="@+id/imageview"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="10dp"
-
-        />
-
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="20dp"
-        android:layout_toEndOf="@id/imageview"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        tools:text="Name" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="387dp"
         android:layout_height="2dp"
-        android:layout_below="@id/imageview"
-        android:layout_marginTop="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="5dp"
         android:background="#DAD8D8" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="312dp"
+        android:layout_height="65dp">
+
+        <ImageView
+            android:id="@+id/imageview"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Name" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/button"
@@ -44,7 +56,6 @@
         android:layout_marginStart="267dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="13dp"
-        android:layout_toEndOf="@+id/imageview"
         android:text="X" />
 
 

@@ -17,6 +17,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    static List<Livro> items = new ArrayList<Livro>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
 
-        List<Livro> items = new ArrayList<Livro>();
         items.add(new Livro("Pequeno Principe", "1", "123", 2022, R.drawable.elon1));
         items.add(new Livro("Pequeno Principe", "2", "123", 2023, R.drawable.elon1));
         items.add(new Livro("Pequeno Principe", "3", "123", 2024, R.drawable.elon1));
@@ -65,5 +66,6 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println("ENTROU 3");
             }
         }
+
     }
 }
