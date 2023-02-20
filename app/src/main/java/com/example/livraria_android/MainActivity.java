@@ -1,5 +1,7 @@
 package com.example.livraria_android;
 
+import static java.lang.Integer.parseInt;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,19 +22,23 @@ public class MainActivity extends AppCompatActivity {
     static List<Livro> items = new ArrayList<Livro>();
 
 
+    public MainActivity(){
+        if(items.size() == 0) {
+            items.add(new Livro("Pequeno Principe", "1", "123", 2022, R.drawable.elon1));
+            items.add(new Livro("Pequeno Principe", "2", "123", 2023, R.drawable.elon1));
+            items.add(new Livro("Pequeno Principe", "3", "123", 2024, R.drawable.elon1));
+            items.add(new Livro("Pequeno Principe", "4", "123", 2025, R.drawable.elon1));
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-
-        items.add(new Livro("Pequeno Principe", "1", "123", 2022, R.drawable.elon1));
-        items.add(new Livro("Pequeno Principe", "2", "123", 2023, R.drawable.elon1));
-        items.add(new Livro("Pequeno Principe", "3", "123", 2024, R.drawable.elon1));
-        items.add(new Livro("Pequeno Principe", "4", "123", 2025, R.drawable.elon1));
-
-
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(new MyAdapter(getApplicationContext(), items));
@@ -53,16 +59,16 @@ public class MainActivity extends AppCompatActivity {
             String itemNovo = extras.getString("livro");
 
             String[] textoSeparado = itemNovo.split(";");
-            Integer imagem = Integer.parseInt(textoSeparado[4]);
+            Integer imagem = parseInt(textoSeparado[4]);
 
             if(imagem == 1){
-                items.add(new Livro(textoSeparado[0], R.drawable.elon1));
+                items.add(new Livro(textoSeparado[0], textoSeparado[1], textoSeparado[2], parseInt(textoSeparado[3]), R.drawable.elon1));
                 System.out.println("ENTROU 1");
             }else if(imagem == 2){
-                items.add(new Livro(textoSeparado[0], R.drawable.elon2));
+                items.add(new Livro(textoSeparado[0], textoSeparado[1], textoSeparado[2], parseInt(textoSeparado[3]), R.drawable.elon2));
                 System.out.println("ENTROU 2");
             }else if(imagem == 3){
-                items.add(new Livro(textoSeparado[0], R.drawable.elon3));
+                items.add(new Livro(textoSeparado[0], textoSeparado[1], textoSeparado[2], parseInt(textoSeparado[3]), R.drawable.elon3));
                 System.out.println("ENTROU 3");
             }
         }

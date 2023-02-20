@@ -66,9 +66,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> implements Vie
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                ViewGroup parent = (ViewGroup) minhaView.getParent();
-                parent.removeView(minhaView);
-
+                MainActivity.items.remove(position);
+                notifyItemRemoved(position);
             }
         });
 
