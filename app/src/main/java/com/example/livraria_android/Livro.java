@@ -32,7 +32,7 @@ public class Livro extends AppCompatActivity {
         String fotona = intent.getStringExtra("foto");
         String sinopse = intent.getStringExtra("sinopse");
         String editora = intent.getStringExtra("editora");
-        String ano = intent.getStringExtra("ano");
+        Integer ano = intent.getIntExtra("ano", 0);
 
 
         super.onCreate(savedInstanceState);

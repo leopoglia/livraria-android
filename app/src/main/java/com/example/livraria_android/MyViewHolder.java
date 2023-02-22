@@ -17,6 +17,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
     Button button;
     TextView sinopse;
     TextView editora;
+    TextView ano;
 
     public MyViewHolder(@NonNull View itemView){
         super(itemView);
@@ -26,8 +27,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
         button = itemView.findViewById(R.id.button);
         sinopse = itemView.findViewById(R.id.sinopseView);
         editora = itemView.findViewById(R.id.editoraView);
-
-
+        ano = itemView.findViewById(R.id.anoView);
     }
 
 
